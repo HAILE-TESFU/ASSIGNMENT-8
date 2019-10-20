@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+          /* solution from Sophia */
+          function isValueInTree(treeNode, searchValue) {
+                if (treeNode.value === searchValue) {
+                    return true;
+                }
+                if (treeNode.descendents.length == 0) {
+                    return false;
+                } else {
+                    // eslint-disable-next-line id-length
+                    for (let i = 0; i < treeNode.descendents.length; i++) {
+                        if (isValueInTree(treeNode.descendents[i], searchValue)) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+/**
+* Helper function to test exercise
+* @returns {undefined}
+*/
+function runIsValueInTree() {
+console.log(`Lisa is in the tree: ${isValueInTree(abe, "Lisa")}`);
+console.log(`Crusty is in the tree: ${isValueInTree(abe, "Crusty")}`);
+}
+
+runIsValueInTree();
+
+function treeModifier(node, modifierFunc) {
+node = modifierFunc(node);
+if (node.descendents.length > 0) {
+    for (anode of node.descendents) {
+        treeModifier(anode, modifierFunc);
+    }
+}
+}
+
+function addStars(node) {
+node.value = "***" + node.value + "***";
+return node;
+}
+
+treeModifier(abe, addStars);
+treeWalk(abe);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

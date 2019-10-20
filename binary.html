@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        let tree;
+
+        function setUp(){
+            noCanvas();
+            tree=new Tree();
+            var n=new Node(5);
+            tree.addNode(n);
+            console.log(tree);
+        }
+
+        function Tree(n){
+            this.root=null;
+        }
+
+        Tree.prototype.addNode=function(n){
+
+            if(this.Node===null){
+                this.root=null;
+            }
+
+        }
+
+
+        function Node(val){
+            this.value=val;
+            this.left=null;
+            this.right=null;
+        }
+        setUp();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

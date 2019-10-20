@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+         function makeArmy() {
+            let shooters = [];
+
+           let i = 0;
+             while (i < 10) {
+                //let j=i;
+        let shooter = function () { // shooter function
+                    alert(i); // should show its number
+                 };
+                 shooters.push(shooter);
+                 i++;
+             }
+
+             return shooters;
+         }
+
+         let army = makeArmy();
+
+         army[0]();
+
+        // function sayHi(){
+        //     alert("hi");
+        // }
+        // alert(sayHi.name);
+
+        // function f1(a){}
+        // function f2(a,b){}
+        // function f3(a,b, ...more){ }
+        // alert(f1.length);alert(f2.length);alert(f3.length);
+    //     function sayHi(){
+    //         alert("Hi");
+    //         sayHi.count++;
+    //     }
+    //     sayHi.count=0;
+    //  sayHi();
+    //    sayHi();
+    //    alert(`called ${sayHi.count} times`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

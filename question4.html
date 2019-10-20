@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>question4</title>
+
+    <script>
+
+
+        let ListNode = { name: "Abe", descendents: [{ name: "Homer", descendents: [{ name: "Lisa", descendents: [] }, { name: "Bart", descendents: [] }, { name: "Maggie", descendents: [] }] }] };
+
+        function isValueInTree(node, target) {
+            if (node.value === target) {
+                return target;
+            }
+            if (node.descendents.length == 0) {
+                return false;
+            }
+            else {
+                // eslint-disable-next-line id-length
+                for (let i = 0; i < node.descendents.length; i++) {
+                    if (isValueInTree(node.descendents[i], target)) {
+                        return target;
+                    }
+                }
+            }
+            return false;
+        }
+        console.log(isValueInTree(ListNode, "John"));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

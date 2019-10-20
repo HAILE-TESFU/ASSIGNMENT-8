@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+    class TreeNode {
+    constructor(value) {
+        this.value = value;
+        this.descendents = [];
+    }
+}
+
+// create nodes with values
+const abe = new TreeNode('Abe');
+const homer = new TreeNode('Homer');
+const bart = new TreeNode('Bart');
+const lisa = new TreeNode('Lisa');
+const maggie = new TreeNode('Maggie');
+
+// associate root with is descendents
+abe.descendents.push(homer);
+homer.descendents.push(bart, lisa, maggie);
+
+function treeWalk(node) {
+    console.log(node.value);
+    //let childNodes = node.descendents;
+    if (node.descendents) {
+       node.descendents.forEach(treeWalk); //loop through all children
+       //treeWalk(node.descendents);
+    }
+}
+treeWalk(abe);
+
+    function contains(node, target) {
+        if (node.value === target) {
+            return true;
+        }
+        if (node.value === null) {
+            return false;
+        }
+        else {
+            for (let key of node.descendents) {
+                if (contains(node.descendents,target));
+                return true;
+            }
+        }
+        return false;
+    }
+    console.log(contains("abe"));
+    console.log(contains("Homer"));
+    console.log(contains("Lisa")); 
+    console.log(contains("Bart"));
+
+
+    //modification
+
+    function modifyNode(node,modifyFunction){
+        node=modifyFunction(node);
+
+        if(node.descendents){
+            for(let key of node.descendents){
+                modifyNode(key,modifyFunction);
+            }
+        }
+
+    }
+
+    function addStar(node){
+        node.value="***"+node+"***";
+
+        return node.value;
+    }
+    modifyNode(abe,addStar);
+    treeWalk(abe);
+
+
+/**
+ * Searches through tree until find the target as the value of a node
+ * @param {object} node that is the root of a tree or subtree
+ * @param {string} target value that i am searching for in the tree
+ * @returns {boolean} true if the target is in the tree, else false
+ */
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

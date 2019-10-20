@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>question5</title>
+
+    <script>
+
+class TreeNode {
+    constructor(value) {
+        this.value = value;
+        this.descendents = [];
+    }
+}
+
+// create nodes with values
+const abe = new TreeNode('Abe');
+const homer = new TreeNode('Homer');
+const bart = new TreeNode('Bart');
+const lisa = new TreeNode('Lisa');
+const maggie = new TreeNode('Maggie');
+
+// associate root with is descendents
+abe.descendents.push(homer);
+homer.descendents.push(bart, lisa, maggie);
+
+
+
+function modify(root, cbFun){
+    root.value=cbFun(root.value);
+    console.log(root.value);
+    let children= root.descendents;
+    if(children){
+        for(let i=0; i<children.length; i++){
+            modify(children[i], cbFun);
+        }
+    }
+}
+      
+ function myModifier(value){
+     return "***" + value;
+ }
+modify(abe, capitalize);
+
+function capitalize(value){
+    return value.toUpperCase();
+}
+
+
+modify(abe, reverseRoot);
+function reverseRoot(value){
+    return value.split("").reverse().join("");
+    
+
+}
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

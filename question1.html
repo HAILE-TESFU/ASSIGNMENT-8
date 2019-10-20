@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>question1</title>
+
+    <script>
+
+class TreeNode {
+constructor(value) {
+this.value = value;
+this.descendents = [];
+}
+}
+// create nodes with values
+const abe = new TreeNode('Abe');
+const homer = new TreeNode('Homer');
+const bart = new TreeNode('Bart');
+const lisa = new TreeNode('Lisa');
+const maggie = new TreeNode('Maggie');
+// associate root with is descendents
+abe.descendents.push(homer);
+homer.descendents.push(bart, lisa, maggie);
+
+function treeWalk(node) {
+    console.log(node.value);
+    let childNodes = node.descendents;
+    if (childNodes) {
+
+        childNodes.forEach(treeWalk);
+
+    }
+}
+treeWalk(abe);
+
+
+/**
+ * Searches through tree until find the target as the value of a node
+ * @param {object} node that is the root of a tree or subtree
+ * @param {string} target value that i am searching for in the tree
+ * @returns {boolean} true if the target is in the tree, else false
+ */
+
+ function isValueInTree(treeNode, searchValue) {
+    if (treeNode.value === searchValue) {
+        return treeNode.value;
+    }
+    if (treeNode.descendents.length == 0) {
+        return false;
+    } else {
+        // eslint-disable-next-line id-length
+        for (let i = 0; i < treeNode.descendents.length; i++) {
+            if (isValueInTree(treeNode.descendents[i], searchValue)) {
+                return searchValue;
+            }
+        }
+    }
+    return false;
+}
+console.log(isValueInTree(abe, "Lisa"));
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

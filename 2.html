@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+          class TreeNode {
+                constructor(value) {
+                    this.value = value;
+                    this.descendents = [];
+                }
+            }
+
+            // create nodes with values
+            const abe = new TreeNode('Abe');
+            const homer = new TreeNode('Homer');
+            const bart = new TreeNode('Bart');
+            const lisa = new TreeNode('Lisa');
+            const maggie = new TreeNode('Maggie');
+
+            // associate root with is descendents
+            abe.descendents.push(homer);
+            homer.descendents.push(bart, lisa, maggie);
+
+            
+            // function treeFind(node, target) {
+
+            //     if (node.value === target) {
+            //         return true;
+            //     };
+            //     if (node.descendents === null) {
+            //         return false;
+            //     } else {
+            //         //let childNodes = node.descendents;
+            //         for (anode of node.descendents) {
+            //             if (treeFind(anode, target)) {
+            //                 return true;
+            //             };
+            //         }
+            //     }
+            //     return false;
+            // }
+
+            // console.log(treeFind(abe, "Lisa"));
+            // console.log(treeFind(abe, "Crusty"));
+
+            function treeFind(node, target) {
+
+                    if (node.value === target) {
+                        let result="";
+                        for(let key in node.descendents){
+                            result+=key;
+                        }
+                    };
+                    if (node.descendents === null) {
+                        return "subTree not found";
+                    } else {
+                        //let childNodes = node.descendents;
+                        for (anode of node.descendents) {
+                            if (treeFind(anode, target));
+                        }
+                    }
+                    return false;
+                }
+
+                console.log(treeFind(abe, "Homer"));
+                console.log(treeFind(abe, "Crusty"));
+
+
+          
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
